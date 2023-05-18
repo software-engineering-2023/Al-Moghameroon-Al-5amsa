@@ -1,119 +1,119 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <title>Bank Login</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <h1>Welcome to the Bank </h1>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>log in page </title>
 
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Chatbot Button</title>
-      <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-    <body>
-      <button id="chatbotButton">Chat with our Bot</button>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password">
+      </div>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+    <button class="register-button" onclick="location.href='register.html'">Register</button>
     
-      <script src="script.js"></script>
-    </body>
-    </html>
-    
+    <button class="chatbot-button" onclick="startChatbot()">Chat with us</button>
+  </div>
+  
 
 
 
-
-
-
-
-
-
-
-
-
+ 
 <style>
 
 
 
 body {
-  background-image: url("https://d2tyltutevw8th.cloudfront.net/CACHE/images/media/image/trade-finance-2021-1200-1612375664/4652d2287cef19b8260430bd72bc6f49.png ");
+  background-image: url('https://img.freepik.com/free-vector/digital-money-transfer-technology-background_1017-17454.jpg?w=1380&t=st=1684437000~exp=1684437600~hmac=3c4a521ad1e150af9819f2a3e3e7d9ef1b3f8052400d8bf12c49f5cd3b42757b'); /* Replace with your image URL */
   background-size: cover;
   background-position: center;
-  font-family: Arial, sans-serif;
 }
-
-/* Rest of your CSS styles */
-
 
 .container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
-  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
-h1 {
-  text-align: center;
+h2 {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  color: #555;
 }
 
 input[type="text"],
 input[type="password"] {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  padding: 8px;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
-input[type="submit"] {
+.login-button,
+.register-button {
+  display: block;
   width: 100%;
   padding: 10px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: #fff;
-  border: none;
   border-radius: 5px;
+  border: none;
+  color: #fff;
+  background-color: #007bff;
+  font-size: 16px;
   cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
+.login-button:hover,
+.register-button:hover {
+  background-color: #0056b3;
 }
 
-.error-text {
-  color: red;
-  margin-top: 10px;
+/* Existing CSS styles */
+
+. /* Existing CSS styles */
+
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
-
-
-
-
- <button {
+.chatbot-button {
+  background-color: #007bff;
+  color: #fff;
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: #fff;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+.chatbot-button:hover {
+  background-color: #0056b3;
 }
 
 
@@ -129,49 +129,18 @@ button:hover {
 </style>
 
 
-<style>
-    body {
-      background-image: url("https://d2tyltutevw8th.cloudfront.net/CACHE/images/media/image/trade-finance-2021-1200-1612375664/4652d2287cef19b8260430bd72bc6f49.png ");
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+
+
+</head>
+<body>
   
-
-
-
-
-
-
-
-
-
-    <div class="container">
-       
-        <form id="loginForm">
-          <label for="username">Username:</label>
-          <input type="text" id="username" required>
-          
-          <label for="password">Password:</label>
-          <input type="password" id="password" required>
-          
-          <input type="submit" value="Login">
-        </form>
-      </div>
-      
-      <script src="script.js"></script>
-    </body>
-    </html>
-     
-
- 
-
-
-
-
-    
-    
 </body>
 </html>
- 
+
+
+
+
+
+
+
+< 
