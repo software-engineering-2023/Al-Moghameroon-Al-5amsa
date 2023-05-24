@@ -1,10 +1,26 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>creditcard2</title>
+
+
+    <div class="container">
+        <p class="message">Congratulations! Your card application has been successfully submitted. We are delighted to inform you that your application has been processed . You will soon receive further details regarding your new card via email. Thank you for choosing our services, and we look forward to serving you as a valued customer. Should you have any questions or require assistance, please do not hesitate to contact our customer support team..</p>
+        <button type="button" class="Back to home page-button" onclick="location.href='homepage.html'">Back to Home page</button>
+      </div>
+      
+      
+      
+       
+
+
+
+
+
+
     <style>
         body {
             margin: 0;
@@ -12,7 +28,6 @@
             background-image: url('https://datarespons.com/wp-content/uploads/Digital-banking-scaled.jpg'); /* Replace with your image URL */
             background-size: cover;
             background-position: center;
-            margin-bottom: 1000px;
         }
 
         .top-bar {
@@ -37,7 +52,7 @@
 
         .top-bar .buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             margin-right: 25px;
         }
 
@@ -59,33 +74,38 @@
             color: #fff;
             font-weight: bold;
             cursor: pointer;
-           
-        }
-
-        .sidebar {
-            background-color: hsl(246, 80%, 8%);
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 50px;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #f6eeee;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding: 10px;
-            width: 100%;
-            text-align: center;
         }
 
 
+        .container {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 50px;
+  width: 750px;
+  margin: 0 auto;
+  text-align: center;
+   
+  margin-bottom: 1000px;
+  margin-top: 100;
+  
+}
+
+.message {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #0f7212;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
 
 
 
@@ -95,23 +115,40 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     </style>
-</head>
+
+
+
+
+
+
+
+
+
+
+    
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
     <div class="top-bar">
         <div class="logo">Central Bank of London</div>
@@ -120,18 +157,8 @@
             <button onclick="window.location.href = 'index.html'">Back</button>
             <button onclick="window.location.href = 'about.html'">About Us</button>
             <button onclick="window.location.href = 'careers.html'">Careers</button>
+            <button onclick="window.location.href = 'contact us.html'">Contact us</button>
             <div class="date">2, February, 2023</div>
         </div>
-    </div>
 
-    <div class="sidebar">
-        <a href="apply for credit card.html">Apply for a Credit Card</a>
-        <a href="loan.html">Apply for a Loan</a>
-        <a href="viewtransactions.html">View Bank Account Transactions</a>
-        <a href="viewtransactions.html">View Credit Card Transactions</a>
-        <a href="credit_card_points.html">View Credit Card Points and Redeem</a>
-        <a href="pay_credit_card.html">Pay Credit Card Bill</a>
-        <a href="transfer_money.html">Transfer Money to Other Bank Accounts</a>
-        <a href="reminders.html">Show Reminders to Pay</a>
-        <a href="notifications.html">Report Notifications</a>
-    </div>
+
