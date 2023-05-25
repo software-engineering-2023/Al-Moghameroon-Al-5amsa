@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>viewtransactions</title>
+    <title>view transactions</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            
             background-image: url('https://datarespons.com/wp-content/uploads/Digital-banking-scaled.jpg'); /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-             
+            display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex: 100%;
         }
 
         .top-bar {
@@ -59,31 +60,136 @@
             color: #fff;
             font-weight: bold;
             cursor: pointer;
+           
         }
 
-        body {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
 
+        .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Adjust as needed */
+  grid-gap: 150px; /* Adjust as needed */
+  justify-content: center;
+  row-gap: 15px;
+  column-gap: 300px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 400;
+    
+   
+}
+
+.component {
+  background-color: #9dc1e0;
+  padding: 20px;
+  margin-top: 200px;
+  width: 400px;  
+  height: 380px; 
+  margin-bottom: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: solid;
+    font-size: smaller;
+  text-justify: distribute;
+  flex-wrap: wrap;
+
+
+}
+
+  
+ 
+.highlight {
+  background-color: #ffec99;
+  padding: 2px 5px;
+  border-radius: 3px;
+   
+  word-wrap: break-word; /* Wrap the text within the available space */
+  max-width: 150px;  
+
+
+}
+.info {
+  background-color: #f0f0f0;
+  padding: 10px;
+   
+  white-space: nowrap; /* Prevent line breaks within each div */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis;
+  margin-top: 20px;
+  
+  
+  
+ 
+  
+   
+}
+
+.box {
+  margin-right: 10px;  
+  width: 120px; /* Adjust the width as needed */
+  overflow-wrap: break-word;
+}
+
+.highlight {
+  margin-left: 10px; /* Add space between the value and the next label */
+  padding: 5px 10px;
+  word-break: break-all;
+}
+
+
+
+ </style>
+ body>
+ <div class="top-bar">
+     <div class="logo">Central Bank of London</div>
+     <div class="buttons">
+         <button onclick="window.location.href = 'profile.html'">Show My Profile</button>
+         <button onclick="window.location.href = 'index.html'">Back</button>
+         <button onclick="window.location.href = 'about.html'">About Us</button>
+         <button onclick="window.location.href = 'careers.html'">Careers</button>
+         <div class="date">2, February, 2023</div>
+     </div>
+ </div>
+
+
+ <div class="container">
+    <div class="component" id="component1">
+    
+
+        <div class="info">
+            <div><span class="box">Amount:</span> <span class="highlight">$700.00</span></div><br>
+            <div><span class="box">Currency:</span> <span class="highlight">USD</span></div> <br>
+            <div><span class="box">Type:</span> <span class="highlight">withdrawal</span></div><br>
+            <div><span class="box">Status:</span> completed<span class="highlight">completed</span></div><br>
+            <div><span class="box">Date occurred:</span>  <span class="highlight">2023-9-12</span></div><br>
+            <div><span class="box">Associated fees:</span> <span class="highlight">$2.00</span></div><br>
+            <div><span class="box">Region:</span> <span class="highlight">Internal</span></div><br>
+            <div><span class="box">In future dated:</span> <span class="highlight">No</span></div><br>
+            <div><span class="box">Sender Account:</span> <span class="highlight">876654238764</span></div><br>
+            <div><span class="box">Receiver Account:</span> <span class="highlight">8766532143232</span></div><br>
+            <div><span class="box">Method:</span> <span class="highlight">3rd-party-App</span></div><br>
+          </div>
+
+
+    </div>
+    <div class="component" id="component2">
      
 
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
+        <div class="info">
+            <div><span class="box">Amount:</span> <span class="highlight">$500.00</span></div><br>
+            <div><span class="box">Currency:</span> <span class="highlight">EGP</span></div> <br>
+            <div><span class="box">Type:</span> <span class="highlight">withdrawal</span></div><br>
+            <div><span class="box">Status:</span> completed<span class="highlight">completed</span></div><br>
+            <div><span class="box">Date occurred:</span>  <span class="highlight">2023-9-12</span></div><br>
+            <div><span class="box">Associated fees:</span> <span class="highlight">$2.00</span></div><br>
+            <div><span class="box">Region:</span> <span class="highlight">Domestic</span></div><br>
+            <div><span class="box">In future dated:</span> <span class="highlight">YES</span></div><br>
+            <div><span class="box">Sender Account:</span> <span class="highlight">809765446764</span></div><br>
+            <div><span class="box">Receiver Account:</span> <span class="highlight">87697554532</span></div><br>
+            <div><span class="box">Method:</span> <span class="highlight">ATM</span></div><br>
+          </div>
 
 
 
@@ -98,21 +204,36 @@
 
 
 
-
-
-
-    </style>
-    <body>
-        <div class="top-bar">
-            <div class="logo">Central Bank of London</div>
-            <div class="buttons">
-                <button onclick="window.location.href = 'profile.html'">Show My Profile</button>
-                <button onclick="window.location.href = 'index.html'">Back</button>
-                <button onclick="window.location.href = 'about.html'">About Us</button>
-                <button onclick="window.location.href = 'careers.html'">Careers</button>
-                <button onclick="window.location.href = 'Home.html'">Home</button>
-                <div class="date">2, February, 2023</div>
-            </div>
-    
-
-           
+    </div>
+    <div class="component" id="component3">
+        <div class="info">
+            <div><span class="box">Amount:</span> <span class="highlight">$2600.77</span></div><br>
+            <div><span class="box">Currency:</span> <span class="highlight">USD</span></div> <br>
+            <div><span class="box">Type:</span> <span class="highlight">withdrawal</span></div><br>
+            <div><span class="box">Status:</span> completed<span class="highlight">completed</span></div><br>
+            <div><span class="box">Date occurred:</span>  <span class="highlight">2023-9-12</span></div><br>
+            <div><span class="box">Associated fees:</span> <span class="highlight">$2.00</span></div><br>
+            <div><span class="box">Region:</span> <span class="highlight">Internal</span></div><br>
+            <div><span class="box">In future dated:</span> <span class="highlight">No</span></div><br>
+            <div><span class="box">Sender Account:</span> <span class="highlight">876654238764</span></div><br>
+            <div><span class="box">Receiver Account:</span> <span class="highlight">8766532143232</span></div><br>
+            <div><span class="box">Method:</span> <span class="highlight">3rd-party-App</span></div><br>
+          </div>
+    </div>
+    <div class="component" id="component4">
+        <div class="info">
+            <div><span class="box">Amount:</span> <span class="highlight">$700.00</span></div><br>
+            <div><span class="box">Currency:</span> <span class="highlight">USD</span></div> <br>
+            <div><span class="box">Type:</span> <span class="highlight">withdrawal</span></div><br>
+            <div><span class="box">Status:</span> completed<span class="highlight">completed</span></div><br>
+            <div><span class="box">Date occurred:</span>  <span class="highlight">2023-9-12</span></div><br>
+            <div><span class="box">Associated fees:</span> <span class="highlight">$2.00</span></div><br>
+            <div><span class="box">Region:</span> <span class="highlight">Internal</span></div><br>
+            <div><span class="box">In future dated:</span> <span class="highlight">No</span></div><br>
+            <div><span class="box">Sender Account:</span> <span class="highlight">876654238764</span></div><br>
+            <div><span class="box">Receiver Account:</span> <span class="highlight">8766532143232</span></div><br>
+            <div><span class="box">Method:</span> <span class="highlight">3rd-party-App</span></div><br>
+          </div>
+    </div>
+  </div>
+  
