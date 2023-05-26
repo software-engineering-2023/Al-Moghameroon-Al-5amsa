@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Transactions</title>
+    <style>
+        body {
+            background-image: url('https://datarespons.com/wp-content/uploads/Digital-banking-scaled.jpg'); /* Replace with your image URL */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex: 100%;
+        }
+    
+        .top-bar {
+            background-color: hsl(246, 80%, 8%);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+    
+        .top-bar .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+        }
+    
+        .top-bar .buttons {
+            display: flex;
+            gap: 10px;
+            margin-right: 25px;
+        }
+    
+        .top-bar .date {
+            font-weight: bold;
+            color: #f8f2f2;
+            display: flex;
+            flex: 1;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    
+        .top-bar .buttons button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #061e39;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #061e39;
+        }
+    
+        .bill {
+            background-color: #f8f2f2;
+            padding: 20px;
+            margin-bottom: 40px; /* Increase the margin-bottom value to create a bigger gap */
+            border-radius: 5px;
+        }
+    
+        .bill h3 {
+            margin-bottom: 10px;
+        }
+    
+        .bill p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    
+        .payment-options {
+            margin-top: 40px; /* Increase the margin-top value to create a bigger gap */
+        }
+    
+        .payment-option {
+            padding: 20px;
+            background-color: #f8f2f2;
+            border-radius: 5px;
+        }
+    
+        .payment-option h3 {
+            margin-bottom: 10px;
+        }
+    
+        .payment-options button {
+            padding: 15px 30px;
+            border-radius: 5px;
+            background-color: #061e39;
+            color: rgb(237, 226, 226);
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        .payment-form {
+            display: none;
+            margin-top: 10px;
+        }
+    
+        .payment-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        .payment-form input[type="radio"] {
+            margin-right: 10px;
+        }
+    
+        .payment-form button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #061e39;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+    
+    
+    <script>
+        function showPaymentForm(billType) {
+            const optionsElement = document.getElementById(`${billType}-options`);
+            const formElement = document.getElementById(`${billType}-form`);
+            optionsElement.style.display = 'none';
+            formElement.style.display = 'block';
+        }
+
+        function payBill(billType) {
+            const paymentMethodElement = document.querySelector(`input[name="paymentMethod"]:checked`);
+            if (paymentMethodElement) {
+                const paymentMethod = paymentMethodElement.value;
+                let thirdPartyForm = '';
+
+                if (paymentMethod === 'thirdParty') {
+                    switch (billType) {
+                        case 'gas':
+                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
+                            break;
+                        case 'electricity':
+                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
+                            break;
+                        case 'telephone':
+                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
+                            break;
+                        case 'water':
+                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
+                            break;
+                    }
+                }
+
+                const confirmMessage = paymentMethod === 'bank' ? 'Thank you for paying through the bank!' : 'Thank you for paying through the third-party app!';
+                alert(confirmMessage);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">Central Bank of London</div>
+        <div class="buttons">
+            <button onclick="window.location.href = 'profile.html'">Show My Profile</button>
+            <button onclick="window.location.href = 'index.html'">Back</button>
+            <button onclick="window.location.href = 'about.html'">About Us</button>
+            <button onclick="window.location.href = 'careers.html'">Careers</button>
+            <div class="date">2, February, 2023</div>
+        </div>
+    </div>
+
+    <h1>Payments</h1>
+
+    <div class="bill">
+        <h3>Gas Bill</h3>
+        <p>$29.00</p>
+        <div id="gas-options" class="payment-options">
+            <button onclick="showPaymentForm('gas')">Pay</button>
+        </div>
+        <div id="gas-form" class="payment-form">
+            <label>
+                Payment Method:
+                <input type="radio" name="paymentMethod" value="bank"> Bank
+                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
+            </label>
+            <button onclick="payBill('gas')">Submit</button>
+        </div>
+    </div>
+
+    <div class="bill">
+        <h3>Electricity Bill</h3>
+        <p>$34.89</p>
+        <div id="electricity-options" class="payment-options">
+            <button onclick="showPaymentForm('electricity')">Pay</button>
+        </div>
+        <div id="electricity-form" class="payment-form">
+            <label>
+                Payment Method:
+                <input type="radio" name="paymentMethod" value="bank"> Bank
+                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
+            </label>
+            <button onclick="payBill('electricity')">Submit</button>
+        </div>
+    </div>
+
+    <div class="bill">
+        <h3>Telephone Bill</h3>
+        <p>$45.00</p>
+        <div id="telephone-options" class="payment-options">
+            <button onclick="showPaymentForm('telephone')">Pay</button>
+        </div>
+        <div id="telephone-form" class="payment-form">
+            <label>
+                Payment Method:
+                <input type="radio" name="paymentMethod" value="bank"> Bank
+                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
+            </label>
+            <button onclick="payBill('telephone')">Submit</button>
+        </div>
+    </div>
+
+    <div class="bill">
+        <h3>Water Bill</h3>
+        <p>$29.00</p>
+        <div id="water-options" class="payment-options">
+            <button onclick="showPaymentForm('water')">Pay</button>
+        </div>
+        <div id="water-form" class="payment-form">
+            <label>
+                Payment Method:
+                <input type="radio" name="paymentMethod" value="bank"> Bank
+                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
+            </label>
+            <button onclick="payBill('water')">Submit</button>
+        </div>
+    </div>
+</body>
+</html>

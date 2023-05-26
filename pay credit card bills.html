@@ -62,31 +62,43 @@
             cursor: pointer;
            
         }
-
-        .sidebar {
-            background-color: hsl(246, 80%, 8%);
-            width: 200px;
-            height: 100vh;
-            position: fixed;
-            top: 50px;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #f6eeee;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-        }
+         
+     
 
      
+        .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: rgb(227, 225, 238);
+    background-color: #0b0c3f;
+}
+
+.container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.container #paymentOptions, .container #partialPaymentOptions {
+    margin-top: 20px;
+}
+
+.container #paymentOptions h3, .container #partialPaymentOptions h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.container button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #061e39;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
 
 
 
@@ -108,22 +120,57 @@
             <div class="date">2, February, 2023</div>
         </div>
     </div>
-
-
-
-
-   
-
-
-
-
-
-
- 
-
-
-
-
+    <div class="container">
+        <h2>Current Balance: <span id="currentBalance">$500.00</span></h2>
+        <h2>Bills to Pay: <span id="billsToPay">$50.00</span></h2>
     
-      
-   
+        <div id="paymentOptions">
+            <h3>How would you like to pay?</h3>
+            <button onclick="payFully()">Pay Fully</button>
+            <button onclick="payPartially()">Pay Partially</button>
+        </div>
+    
+        <div id="partialPaymentOptions" style="display: none;">
+            <h3>Select a partial payment option:</h3>
+            <button onclick="installmentPayment(10)">Pay $10.00 now and install the remaining within 1-3 months</button>
+            <button onclick="installmentPayment(20)">Pay $20.00 now and install the remaining within 1 month</button>
+        </div>
+    </div>
+    
+    <script>
+        function payFully() {
+            // Reset current balance to $450.00
+            document.getElementById("currentBalance").textContent = "$450.00";
+    
+            // Reset bills to pay to $0.00
+            document.getElementById("billsToPay").textContent = "$0.00";
+    
+            // Show payment successful alert
+            alert("Payment successful!");
+        }
+    
+        function payPartially() {
+            // Hide payment options and show partial payment options
+            document.getElementById("paymentOptions").style.display = "none";
+            document.getElementById("partialPaymentOptions").style.display = "block";
+        }
+    
+        function installmentPayment(amount) {
+            // Update current balance by subtracting the selected amount
+            var currentBalance = parseFloat(document.getElementById("currentBalance").textContent.slice(1));
+            var newBalance = currentBalance - amount;
+            document.getElementById("currentBalance").textContent = "$" + newBalance.toFixed(2);
+    
+            // Update bills to pay by subtracting the selected amount
+            var billsToPay = parseFloat(document.getElementById("billsToPay").textContent.slice(1));
+            var newBillsToPay = billsToPay - (50 - amount);
+            document.getElementById("billsToPay").textContent = "$" + newBillsToPay.toFixed(2);
+    
+            // Hide partial payment options
+            document.getElementById("partialPaymentOptions").style.display = "none";
+    
+            // Show a success message or perform any other actions as needed
+            alert("Payment successful!");
+        }
+    </script>
+    
