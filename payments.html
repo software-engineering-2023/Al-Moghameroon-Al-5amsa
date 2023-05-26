@@ -14,7 +14,7 @@
             height: 100vh;
             flex: 100%;
         }
-    
+
         .top-bar {
             background-color: hsl(246, 80%, 8%);
             height: 50px;
@@ -28,19 +28,19 @@
             width: 100%;
             z-index: 9999;
         }
-    
+
         .top-bar .logo {
             font-weight: bold;
             font-size: 20px;
             color: #fff;
         }
-    
+
         .top-bar .buttons {
             display: flex;
             gap: 10px;
             margin-right: 25px;
         }
-    
+
         .top-bar .date {
             font-weight: bold;
             color: #f8f2f2;
@@ -51,7 +51,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
-    
+
         .top-bar .buttons button {
             padding: 10px 20px;
             border-radius: 5px;
@@ -60,69 +60,62 @@
             font-weight: bold;
             cursor: pointer;
         }
-    
-        h1 {
+
+        .balance {
             text-align: center;
-            margin-bottom: 20px;
-            color: #061e39;
+            margin-top: 100px;
+            font-size: 24px;
+            color: #fff;
         }
-    
-        .bill {
-            background-color: #f8f2f2;
+
+        .bill-form {
+            background-color: rgba(255, 255, 255, 0.7);
             padding: 20px;
-            margin-bottom: 40px; /* Increase the margin-bottom value to create a bigger gap */
-            border-radius: 5px;
+            margin: 20px;
+            border-radius: 10px;
         }
-    
-        .bill h3 {
+
+        .bill-form h3 {
             margin-bottom: 10px;
         }
-    
-        .bill p {
+
+        .bill-form p {
             margin-bottom: 10px;
             font-weight: bold;
         }
-    
-        .payment-options {
-            margin-top: 40px; /* Increase the margin-top value to create a bigger gap */
-        }
-    
-        .payment-option {
-            padding: 20px;
-            background-color: #f8f2f2;
-            border-radius: 5px;
-        }
-    
-        .payment-option h3 {
-            margin-bottom: 10px;
-        }
-    
-        .payment-options button {
-            padding: 15px 30px;
+
+        .bill-form button {
+            padding: 10px 20px;
             border-radius: 5px;
             background-color: #061e39;
-            color: rgb(237, 226, 226);
+            color: #fff;
             font-weight: bold;
             cursor: pointer;
-            display: block;
-            margin-bottom: 10px;
         }
-    
-        .payment-form {
+
+        .third-party-form {
             display: none;
-            margin-top: 10px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
         }
-    
-        .payment-form label {
+
+        .third-party-form label {
             display: block;
             margin-bottom: 10px;
         }
-    
-        .payment-form input[type="radio"] {
-            margin-right: 10px;
+
+        .third-party-form input[type="text"],
+        .third-party-form input[type="number"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
         }
-    
-        .payment-form button {
+
+        .third-party-form button {
             padding: 10px 20px;
             border-radius: 5px;
             background-color: #061e39;
@@ -131,44 +124,6 @@
             cursor: pointer;
         }
     </style>
-    
-    
-    <script>
-        function showPaymentForm(billType) {
-            const optionsElement = document.getElementById(`${billType}-options`);
-            const formElement = document.getElementById(`${billType}-form`);
-            optionsElement.style.display = 'none';
-            formElement.style.display = 'block';
-        }
-
-        function payBill(billType) {
-            const paymentMethodElement = document.querySelector(`input[name="paymentMethod"]:checked`);
-            if (paymentMethodElement) {
-                const paymentMethod = paymentMethodElement.value;
-                let thirdPartyForm = '';
-
-                if (paymentMethod === 'thirdParty') {
-                    switch (billType) {
-                        case 'gas':
-                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
-                            break;
-                        case 'electricity':
-                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
-                            break;
-                        case 'telephone':
-                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
-                            break;
-                        case 'water':
-                            thirdPartyForm = '<label>Third Party App: <input type="text" name="thirdPartyApp" placeholder="Enter third-party app name"></label>';
-                            break;
-                    }
-                }
-
-                const confirmMessage = paymentMethod === 'bank' ? 'Thank you for paying through the bank!' : 'Thank you for paying through the third-party app!';
-                alert(confirmMessage);
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="top-bar">
@@ -182,70 +137,120 @@
         </div>
     </div>
 
-    <h1>Payments</h1>
+    <div class="balance">
+        <p>Current balance account is $500.00</p>
+    </div>
 
-    <div class="bill">
+    <div class="bill-form" id="gasForm">
         <h3>Gas Bill</h3>
-        <p>$29.00</p>
-        <div id="gas-options" class="payment-options">
-            <button onclick="showPaymentForm('gas')">Pay</button>
-        </div>
-        <div id="gas-form" class="payment-form">
-            <label>
-                Payment Method:
-                <input type="radio" name="paymentMethod" value="bank"> Bank
-                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
-            </label>
-            <button onclick="payBill('gas')">Submit</button>
-        </div>
+        <p>Amount to pay: $12.89</p>
+        <button onclick="payWithBank('gas', this)">Pay with Bank</button>
+        <button onclick="showThirdPartyForm('gas', this)">Pay with 3rd-party</button>
     </div>
 
-    <div class="bill">
+    <div class="bill-form" id="electricityForm">
         <h3>Electricity Bill</h3>
-        <p>$34.89</p>
-        <div id="electricity-options" class="payment-options">
-            <button onclick="showPaymentForm('electricity')">Pay</button>
-        </div>
-        <div id="electricity-form" class="payment-form">
-            <label>
-                Payment Method:
-                <input type="radio" name="paymentMethod" value="bank"> Bank
-                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
-            </label>
-            <button onclick="payBill('electricity')">Submit</button>
-        </div>
+        <p>Amount to pay: $56.90</p>
+        <button onclick="payWithBank('electricity', this)">Pay with Bank</button>
+        <button onclick="showThirdPartyForm('electricity', this)">Pay with 3rd-party</button>
     </div>
 
-    <div class="bill">
+    <div class="bill-form" id="telephoneForm">
         <h3>Telephone Bill</h3>
-        <p>$45.00</p>
-        <div id="telephone-options" class="payment-options">
-            <button onclick="showPaymentForm('telephone')">Pay</button>
-        </div>
-        <div id="telephone-form" class="payment-form">
-            <label>
-                Payment Method:
-                <input type="radio" name="paymentMethod" value="bank"> Bank
-                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
-            </label>
-            <button onclick="payBill('telephone')">Submit</button>
-        </div>
+        <p>Amount to pay: $34.30</p>
+        <button onclick="payWithBank('telephone', this)">Pay with Bank</button>
+        <button onclick="showThirdPartyForm('telephone', this)">Pay with 3rd-party</button>
     </div>
 
-    <div class="bill">
+    <div class="bill-form" id="waterForm">
         <h3>Water Bill</h3>
-        <p>$29.00</p>
-        <div id="water-options" class="payment-options">
-            <button onclick="showPaymentForm('water')">Pay</button>
-        </div>
-        <div id="water-form" class="payment-form">
-            <label>
-                Payment Method:
-                <input type="radio" name="paymentMethod" value="bank"> Bank
-                <input type="radio" name="paymentMethod" value="thirdParty"> Third-Party
-            </label>
-            <button onclick="payBill('water')">Submit</button>
-        </div>
+        <p>Amount to pay: $67.90</p>
+        <button onclick="payWithBank('water', this)">Pay with Bank</button>
+        <button onclick="showThirdPartyForm('water', this)">Pay with 3rd-party</button>
     </div>
+
+    <div id="thirdPartyForm" class="third-party-form">
+        <h3>Third Party Payment</h3>
+        <form id="paymentForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" required>
+            
+            <label for="expiration">Expiration Date:</label>
+            <input type="text" id="expiration" required>
+            
+            <label for="cvv">CVV:</label>
+            <input type="number" id="cvv" required>
+            
+            <button onclick="payWithThirdParty()">Pay</button>
+        </form>
+    </div>
+
+    <script>
+        let currentBalance = 500.00;
+    
+        function updateCurrentBalance(amount) {
+            currentBalance -= amount;
+            const balanceElement = document.querySelector('.balance p');
+            balanceElement.textContent = `Current balance account is $${currentBalance.toFixed(2)}`;
+        }
+    
+        function payWithBank(billType, button) {
+            let billPrice;
+            if (billType === 'gas') {
+                billPrice = 12.89;
+            } else if (billType === 'electricity') {
+                billPrice = 56.90;
+            } else if (billType === 'telephone') {
+                billPrice = 34.30;
+            } else if (billType === 'water') {
+                billPrice = 67.90;
+            }
+    
+            if (currentBalance >= billPrice) {
+                const form = button.parentNode;
+                form.remove();
+                updateCurrentBalance(billPrice);
+                alert(`Payment of $${billPrice.toFixed(2)} for ${billType} bill has been successfully processed.`);
+            } else {
+                alert('Insufficient funds. Please top up your account.');
+            }
+        }
+    
+        function showThirdPartyForm(billType, button) {
+            const form = button.parentNode;
+            form.style.display = 'none';
+    
+            const thirdPartyForm = document.getElementById('thirdPartyForm');
+            thirdPartyForm.style.display = 'block';
+    
+            const paymentForm = document.getElementById('paymentForm');
+            paymentForm.reset();
+            paymentForm.setAttribute('data-bill-type', billType);
+        }
+    
+        function payWithThirdParty() {
+            const paymentForm = document.getElementById('paymentForm');
+            const billType = paymentForm.getAttribute('data-bill-type');
+    
+            const name = paymentForm.querySelector('#name').value;
+            const cardNumber = paymentForm.querySelector('#cardNumber').value;
+            const expiration = paymentForm.querySelector('#expiration').value;
+            const cvv = paymentForm.querySelector('#cvv').value;
+    
+            const form = document.getElementById(`${billType}Form`);
+            form.remove();
+            updateCurrentBalance(0);
+            alert(`Payment for ${billType} bill has been successfully processed with the following details:\nName: ${name}\nCard Number: ${cardNumber}\nExpiration Date: ${expiration}\nCVV: ${cvv}`);
+    
+            paymentForm.reset();
+            paymentForm.removeAttribute('data-bill-type');
+    
+            const thirdPartyForm = document.getElementById('thirdPartyForm');
+            thirdPartyForm.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
