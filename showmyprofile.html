@@ -82,7 +82,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.min.js"></script>
     <script>
-        // Initial data for the chart
+        
         const initialBalance = 500;
         const data = {
             labels: ['Current Balance', 'Mutual Funds', 'Certificates/Deposits'],
@@ -92,7 +92,7 @@
             }]
         };
 
-        // Chart options
+       
         const options = {
             responsive: true,
             maintainAspectRatio: false,
@@ -112,13 +112,13 @@
             options: options
         });
 
-        // Function to update the chart when redeeming points
+        
         function redeemPoints() {
             const newBalance = 1200;
             chart.data.datasets[0].data[0] = newBalance;
             chart.update();
 
-            // Update current balance in account summary
+            
             const currentBalanceElement = document.getElementById('currentBalance');
             currentBalanceElement.innerText = `Current Balance: $${newBalance}`;
         }
