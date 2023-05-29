@@ -101,7 +101,7 @@
         <button onclick="window.location.href = 'homepage.html'">back</button>
        
         <button onclick="window.location.href = 'index.html'">About us</button>
-        <button onclick="window.location.href = 'index.html'">Careers</button>
+         
         <button onclick="window.location.href = 'index.html'">Logout</button>
       </div>
       <div class="date">
@@ -180,7 +180,7 @@
 
 
 
-              <button type="button" class="Apply-button" onclick="location.href='uapplied.html'">Apply</button>
+                    <button type="button" class="Apply-button" onclick="validateForm()">Apply</button>
                
             </form>
           </div>
@@ -249,3 +249,39 @@
                       .back-button:hover {
                         background-color: hsl(136, 100%, 35%);
                       }</style>
+
+<script>
+  function validateForm() {
+    var firstName = document.getElementById('firstName').value;
+    var middleName = document.getElementById('middleName').value;
+    var lastName = document.getElementById('lastName').value;
+    var dateOfBirth = document.getElementById('dob').value;
+    var phoneNumber = document.getElementById('Number').value;
+    var nationalID = document.getElementById('National id').value;
+    var email = document.getElementById('email').value;
+    var loanAmount = document.getElementById('loan amount').value;
+    var annualIncome = document.getElementById('annual income').value;
+    var loanPurpose = document.getElementById('What will be the loan used for').value;
+    var currentAddress = document.getElementById('current address?').value;
+    var addressDuration = document.getElementById('how long have you been living in your current address?').value;
+    
+    if (
+      firstName.trim() === '' ||
+      middleName.trim() === '' ||
+      lastName.trim() === '' ||
+      dateOfBirth.trim() === '' ||
+      phoneNumber.trim() === '' ||
+      nationalID.trim() === '' ||
+      email.trim() === '' ||
+      loanAmount.trim() === '' ||
+      annualIncome.trim() === '' ||
+      loanPurpose.trim() === '' ||
+      currentAddress.trim() === '' ||
+      addressDuration.trim() === ''
+    ) {
+      alert('Please fill in all fields.');
+    } else {
+           window.location.href = 'uapplied.html';
+    }
+  }
+</script>
